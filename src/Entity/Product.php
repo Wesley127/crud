@@ -26,8 +26,12 @@ class Product
     #[ORM\Column(type: 'text', nullable: true)]
     private $omschrijving;
 
+    /*
+
     #[ORM\Column(type: 'datetime')]
     private $creatietijd;
+
+    */
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $changetijd;
@@ -35,6 +39,9 @@ class Product
 
     #[ORM\Column(type: 'float')]
     private $prijs;
+
+    #[ORM\Column(type: 'datetimetz')]
+    private $creatietijd;
 
     public function getId(): ?int
     {
@@ -79,6 +86,7 @@ class Product
         return $this;
     }
 
+    /*
     public function getCreatietijd(): ?\DateTimeInterface
     {
         return $this->creatietijd;
@@ -95,7 +103,7 @@ class Product
         }
         return $this;
     }
-
+*/
 
 
     public function getChangetijd(): ?\DateTimeInterface
@@ -142,5 +150,20 @@ class Product
         $this->prijs = $prijs;
 
         return $this;
+    }
+
+    public function getCreatietijd(): ?\DateTimeInterface
+    {
+        return $this->creatietijd;
+    }
+
+    public function setCreatietijd(\DateTimeInterface $creatietijd): self
+    {
+        if (empty($this->creatietijd)){
+            $this->creatietijd = new \DateTime("now");
+            }else{
+                $this->test = $creatietijd;
+            }
+            return $this;
     }
 }
